@@ -3,17 +3,19 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default class DeckTitleView extends React.Component {
   render() {
-    const {card={}} = this.props;
-    const {questions=[]} = card;
+    const { card = {} } = this.props;
+    const { questions = [] } = card;
     return (
       <View style={styles.container}>
-        {
-          this.props.children || 
-          <TouchableOpacity onPress={() => {this.props.onPress()}}>
+        {this.props.children || (
+          <TouchableOpacity
+            onPress={() => {
+              this.props.onPress();
+            }}>
             <Text style={styles.title}>{card.title}</Text>
-            <Text style={styles.count}>{`${questions.length} questions`}</Text>
-          </TouchableOpacity> 
-        }
+            <Text style={styles.count}>{`${questions.length} cards`}</Text>
+          </TouchableOpacity>
+        )}
       </View>
     );
   }
@@ -35,5 +37,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-  }
+  },
 });

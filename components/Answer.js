@@ -1,12 +1,13 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { purple } from '../utils/colors'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { purple } from '../utils/colors';
 
-export default function Answer ({ children, answerText='', style = {} }) {
-  return (
-    children ? (<View>{children}</View>) :
-    (<Text style={[styles.anwer, style]}>{answerText}</Text>)
-  )
+export default function Answer({ children, answerText = '', style = {} }) {
+  return children ? (
+    <View>{children}</View>
+  ) : (
+    <Text style={[styles.anwer, style]}>{answerText}</Text>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -14,6 +15,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: purple,
     fontSize: 20,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

@@ -5,6 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import { applyMiddleware } from 'redux';
 import { Text, View, StyleSheet } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import cardReducer from './reducers';
 import DeckList from './container/DeckList';
@@ -12,45 +13,50 @@ import DeckDetails from './container/DeckDetails';
 import Quiz from './container/Quiz';
 import NewQuestion from './container/NewQuestion';
 import NewDeck from './container/NewDeck';
+import { setLocalNotification } from './utils/helper';
 
 const MainNavigator = StackNavigator({
   DeckList: {
     screen: DeckList,
     navigationOptions: {
-      title: "Home"
-    }
+      title: 'Home',
+    },
   },
   DeckDetails: {
     screen: DeckDetails,
     navigationOptions: {
-      title: "Deck cards"
-    }
+      title: 'Deck cards',
+    },
   },
   Quiz: {
     screen: Quiz,
     navigationOptions: {
-      title: "Quiz"
-    }
+      title: 'Quiz',
+    },
   },
   NewQuestion: {
     screen: NewQuestion,
     navigationOptions: {
-      title: "New Question"
-    }
+      title: 'New Question',
+    },
   },
   NewDeck: {
     screen: NewDeck,
     navigationOptions: {
-      title: "New Deck"
-    }
-  }
+      title: 'New Deck',
+    },
+  },
 });
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
 
   render() {
     return (
-      <Provider store={createStore(cardReducer, applyMiddleware(thunkMiddleware))}>
+      <Provider
+        store={createStore(cardReducer, applyMiddleware(thunkMiddleware))}>
         <View style={styles.container}>
           <MainNavigator />
         </View>
@@ -61,6 +67,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
 });

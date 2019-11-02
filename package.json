@@ -1,7 +1,7 @@
 {
-  "name": "mobileflashcards",
+  "name": "github.com/vipinjalla/mobileflashcards",
   "version": "0.0.0",
-  "description": "No description",
+  "description": "vipinjalla/mobileflashcards @ Nov 2, 2019",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
